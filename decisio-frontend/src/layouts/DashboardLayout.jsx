@@ -1,20 +1,20 @@
+import Sidebar from "../components/common/Sidebar";
+
 function DashboardLayout({ children }) {
     return (
-        <div className="min-h-screen bg-gray-100">
+        <div className="flex bg-grey-100">
 
-            <div className="bg-blue-600 text-white p-4">
-                Navbar
-            </div>
+            <Sidebar />
 
-            <div className="flex">
+            <div className="flex-1">
 
-                <div className="w-64 bg-white shadow-md min-h-screen p-4">
-                    Sidebar
+                <div className="bg-white shadow-sm p-4">
+                    Navbar
                 </div>
 
-                <div className="flex-1 p-6">
+                <main className="p-6">
                     {children}
-                </div>
+                </main>
 
             </div>
         </div>
