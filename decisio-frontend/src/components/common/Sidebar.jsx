@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../../context/useAuth";
 
 import {
     FaHome,
@@ -8,36 +9,67 @@ import {
 } from "react-icons/fa";
 
 function Sidebar() {
+    const { user } = useAuth();
 
-    const menuItems = [
-        {
-            name: "Dashboard",
-            path: "/dashboard",
-            icon: <FaHome />,
-        },
-        {
-            name: "Requests",
-            path: "/requests",
-            icon: <FaFileAlt />,
-        },
-        {
-            name: "Approvals",
-            path: "/approvals",
-            icon: <FaCheckCircle />,
-        },
-        {
-            name: "Notifications",
-            path: "/notifications",
-            icon: <FaBell />,
-        },
-    ];
+    const roleMenus = {
+
+        student: [
+            {
+                name: "Dashboard",
+                path: "/dashboard",
+                icon: <FaHome />,
+            },
+            {
+                name: "Requests",
+                path: "/requests",
+                icon: <FaFileAlt />,
+            },
+            {
+                name: "Notifications",
+                path: "/notifications",
+                icon: <FaBell />,
+            },
+        ],
+
+        mentor: [
+            {
+                name: "Dashboard",
+                path: "/dashboard",
+                icon: <FaHome />,
+            },
+            {
+                name: "Approvals",
+                path: "/approvals",
+                icon: <FaCheckCircle />,
+            },
+            {
+                name: "Notifications",
+                path: "/notifications",
+                icon: <FaBell />,
+            },
+        ],
+
+    };
+
+    const menuItems = roleMenus[user?.role] || [];
 
     return (
         <div className="w-64 min-h-screen bg-white shadow-md p-4">
 
-            <h1 className="text-2xl font-bold text-blue-600 mb-8">
-                Decisio
-            </h1>
+            <div className="mb-8">
+                <h1 className="text-2xl font-bold text-blue-600">
+                    Decisio
+                </h1>
+                <div className="mt-2">
+                    <p className="font-semibold text-gray-800">
+                        {user?.name ?? "Guest"}
+                    </p>
+
+                    <p className="text-sm text-gray-500 capitalize">
+                        {user?.role ?? "student"}
+                    </p>
+                </div>
+            </div>
 
             <div className="flex flex-col gap-2">
 
