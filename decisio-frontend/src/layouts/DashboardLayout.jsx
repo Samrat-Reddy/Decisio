@@ -1,4 +1,5 @@
 import Sidebar from "../components/common/Sidebar";
+import Navbar from "../components/common/Navbar";
 
 function DashboardLayout({ children }) {
     return (
@@ -8,9 +9,7 @@ function DashboardLayout({ children }) {
 
             <div className="flex-1">
 
-                <div className="bg-white shadow-sm p-4">
-                    Navbar
-                </div>
+               <Navbar />
 
                 <main className="p-6">
                     {children}
