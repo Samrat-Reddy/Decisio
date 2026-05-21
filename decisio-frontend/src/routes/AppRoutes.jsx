@@ -5,8 +5,10 @@ import Dashboard from "../pages/dashboard/Dashboard";
 import Requests from "../pages/requests/Requests";
 import Approvals from "../pages/approvals/Approvals";
 import Notifications from "../pages/notifications/Notifications";
+import CreateRequest from "../pages/requests/CreateRequest";
 
 import DashboardLayout from "../layouts/DashboardLayout";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 
 function AppRoutes() {
     return (
@@ -51,9 +53,22 @@ function AppRoutes() {
                     }
                 />
 
+                <Route
+                    path="/requests/create"
+                    element={
+                        <ProtectedRoute>
+
+                            <DashboardLayout>
+                                <CreateRequest />
+                            </DashboardLayout>
+
+                        </ProtectedRoute>
+                    }
+                />
+
             </Routes>
         </BrowserRouter>
-    );
+);
 }
 
 export default AppRoutes;

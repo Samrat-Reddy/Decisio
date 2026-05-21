@@ -21,7 +21,7 @@ function Sidebar() {
             },
             {
                 name: "Requests",
-                path: "/requests",
+                path: "/requests/create",
                 icon: <FaFileAlt />,
             },
             {

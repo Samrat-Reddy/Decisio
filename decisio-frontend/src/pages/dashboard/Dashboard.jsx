@@ -9,12 +9,29 @@ import StatsCard from "../../components/dashboard/StatsCard";
 
 import RecentActivity from "../../components/dashboard/RecentActivity";
 
+import WorkFlowTimeline from "../../components/workflow/WorkFlowTimeline";
+
 import { useAuth } from "../../context/useAuth";
 
 function Dashboard() {
 
     const { user } = useAuth();
 
+    const workflowSteps = [
+        {
+            role: "mentor",
+            status: "approved",
+            comment: "Leave approved",
+        },
+        {
+            role: "hod",
+            status: "pending",
+        },
+        {
+            role: "dean",
+            status: "waiting",
+        },
+    ]
     return (
       <div className="space-y-6">
 
@@ -63,6 +80,8 @@ function Dashboard() {
           </div>
 
           <RecentActivity />
+
+          <WorkFlowTimeline steps={workflowSteps} />
 
       </div>
     );
